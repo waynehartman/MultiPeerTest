@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="MPTChatMessage" representedClassName="MPTChatMessage" syncable="YES">
+        <attribute name="attachmentUri" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="receivedTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MPTChatUser" inverseName="messages" inverseEntity="MPTChatUser" syncable="YES"/>
+    </entity>
+    <entity name="MPTChatUser" representedClassName="MPTChatUser" syncable="YES">
+        <attribute name="isLocalUser" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MPTChatMessage" inverseName="user" inverseEntity="MPTChatMessage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MPTChatMessage" positionX="160" positionY="230" width="128" height="103"/>
+        <element name="MPTChatUser" positionX="-47" positionY="135" width="128" height="88"/>
+    </elements>
+</model>

@@ -14,13 +14,20 @@
 		B0881422181A194D001FEC3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0881421181A194D001FEC3C /* main.m */; };
 		B0881426181A194D001FEC3C /* MPTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0881425181A194D001FEC3C /* MPTAppDelegate.m */; };
 		B0881429181A194D001FEC3C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0881427181A194D001FEC3C /* Main.storyboard */; };
-		B088142C181A194D001FEC3C /* MPTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B088142B181A194D001FEC3C /* MPTViewController.m */; };
 		B088142E181A194D001FEC3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B088142D181A194D001FEC3C /* Images.xcassets */; };
 		B0881435181A194D001FEC3C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0881434181A194D001FEC3C /* XCTest.framework */; };
 		B0881436181A194D001FEC3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0881415181A194D001FEC3C /* Foundation.framework */; };
 		B0881437181A194D001FEC3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0881419181A194D001FEC3C /* UIKit.framework */; };
 		B088143F181A194D001FEC3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B088143D181A194D001FEC3C /* InfoPlist.strings */; };
 		B0881441181A194D001FEC3C /* MultiPeerTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0881440181A194D001FEC3C /* MultiPeerTestTests.m */; };
+		B088144B181A195A001FEC3C /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B088144A181A195A001FEC3C /* MultipeerConnectivity.framework */; };
+		B0BC3C42182077A800315EAE /* MPTChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C41182077A800315EAE /* MPTChatViewController.m */; };
+		B0BC3C45182077B900315EAE /* MPTChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C44182077B900315EAE /* MPTChatCell.m */; };
+		B0BC3C491820780400315EAE /* ChatModal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C471820780400315EAE /* ChatModal.xcdatamodeld */; };
+		B0BC3C4C1820783300315EAE /* MPTChatDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C4B1820783300315EAE /* MPTChatDataSource.m */; };
+		B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C5518207BBB00315EAE /* MPTDataController.m */; };
+		B0BC3C6818209D5800315EAE /* MPTChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6718209D5800315EAE /* MPTChatMessage.m */; };
+		B0BC3C6B18209D5900315EAE /* MPTChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6A18209D5900315EAE /* MPTChatUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +52,26 @@
 		B0881424181A194D001FEC3C /* MPTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPTAppDelegate.h; sourceTree = "<group>"; };
 		B0881425181A194D001FEC3C /* MPTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPTAppDelegate.m; sourceTree = "<group>"; };
 		B0881428181A194D001FEC3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B088142A181A194D001FEC3C /* MPTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPTViewController.h; sourceTree = "<group>"; };
-		B088142B181A194D001FEC3C /* MPTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPTViewController.m; sourceTree = "<group>"; };
 		B088142D181A194D001FEC3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B0881433181A194D001FEC3C /* MultiPeerTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultiPeerTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0881434181A194D001FEC3C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B088143C181A194D001FEC3C /* MultiPeerTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MultiPeerTestTests-Info.plist"; sourceTree = "<group>"; };
 		B088143E181A194D001FEC3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B0881440181A194D001FEC3C /* MultiPeerTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiPeerTestTests.m; sourceTree = "<group>"; };
+		B088144A181A195A001FEC3C /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
+		B0BC3C40182077A800315EAE /* MPTChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatViewController.h; sourceTree = "<group>"; };
+		B0BC3C41182077A800315EAE /* MPTChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatViewController.m; sourceTree = "<group>"; };
+		B0BC3C43182077B900315EAE /* MPTChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatCell.h; sourceTree = "<group>"; };
+		B0BC3C44182077B900315EAE /* MPTChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatCell.m; sourceTree = "<group>"; };
+		B0BC3C481820780400315EAE /* ChatModal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatModal.xcdatamodel; sourceTree = "<group>"; };
+		B0BC3C4A1820783300315EAE /* MPTChatDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatDataSource.h; sourceTree = "<group>"; };
+		B0BC3C4B1820783300315EAE /* MPTChatDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatDataSource.m; sourceTree = "<group>"; };
+		B0BC3C5418207BBB00315EAE /* MPTDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTDataController.h; sourceTree = "<group>"; };
+		B0BC3C5518207BBB00315EAE /* MPTDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTDataController.m; sourceTree = "<group>"; };
+		B0BC3C6618209D5800315EAE /* MPTChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatMessage.h; sourceTree = "<group>"; };
+		B0BC3C6718209D5800315EAE /* MPTChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatMessage.m; sourceTree = "<group>"; };
+		B0BC3C6918209D5900315EAE /* MPTChatUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatUser.h; sourceTree = "<group>"; };
+		B0BC3C6A18209D5900315EAE /* MPTChatUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B088144B181A195A001FEC3C /* MultipeerConnectivity.framework in Frameworks */,
 				B0881418181A194D001FEC3C /* CoreGraphics.framework in Frameworks */,
 				B088141A181A194D001FEC3C /* UIKit.framework in Frameworks */,
 				B0881416181A194D001FEC3C /* Foundation.framework in Frameworks */,
@@ -101,6 +121,7 @@
 		B0881414181A194D001FEC3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B088144A181A195A001FEC3C /* MultipeerConnectivity.framework */,
 				B0881415181A194D001FEC3C /* Foundation.framework */,
 				B0881417181A194D001FEC3C /* CoreGraphics.framework */,
 				B0881419181A194D001FEC3C /* UIKit.framework */,
@@ -112,11 +133,12 @@
 		B088141B181A194D001FEC3C /* MultiPeerTest */ = {
 			isa = PBXGroup;
 			children = (
+				B0BC3C3F1820779800315EAE /* Chat View Controller */,
+				B0BC3C6C18209DD700315EAE /* Communication Controller */,
+				B0BC3C46182077E400315EAE /* Models */,
 				B0881424181A194D001FEC3C /* MPTAppDelegate.h */,
 				B0881425181A194D001FEC3C /* MPTAppDelegate.m */,
 				B0881427181A194D001FEC3C /* Main.storyboard */,
-				B088142A181A194D001FEC3C /* MPTViewController.h */,
-				B088142B181A194D001FEC3C /* MPTViewController.m */,
 				B088142D181A194D001FEC3C /* Images.xcassets */,
 				B088141C181A194D001FEC3C /* Supporting Files */,
 			);
@@ -150,6 +172,48 @@
 				B088143D181A194D001FEC3C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0BC3C3F1820779800315EAE /* Chat View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC3C40182077A800315EAE /* MPTChatViewController.h */,
+				B0BC3C41182077A800315EAE /* MPTChatViewController.m */,
+				B0BC3C43182077B900315EAE /* MPTChatCell.h */,
+				B0BC3C44182077B900315EAE /* MPTChatCell.m */,
+				B0BC3C4A1820783300315EAE /* MPTChatDataSource.h */,
+				B0BC3C4B1820783300315EAE /* MPTChatDataSource.m */,
+			);
+			path = "Chat View Controller";
+			sourceTree = "<group>";
+		};
+		B0BC3C46182077E400315EAE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC3C4D1820793800315EAE /* Managed Objects */,
+				B0BC3C471820780400315EAE /* ChatModal.xcdatamodeld */,
+				B0BC3C5418207BBB00315EAE /* MPTDataController.h */,
+				B0BC3C5518207BBB00315EAE /* MPTDataController.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B0BC3C4D1820793800315EAE /* Managed Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC3C6618209D5800315EAE /* MPTChatMessage.h */,
+				B0BC3C6718209D5800315EAE /* MPTChatMessage.m */,
+				B0BC3C6918209D5900315EAE /* MPTChatUser.h */,
+				B0BC3C6A18209D5900315EAE /* MPTChatUser.m */,
+			);
+			path = "Managed Objects";
+			sourceTree = "<group>";
+		};
+		B0BC3C6C18209DD700315EAE /* Communication Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Communication Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,9 +314,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B088142C181A194D001FEC3C /* MPTViewController.m in Sources */,
 				B0881426181A194D001FEC3C /* MPTAppDelegate.m in Sources */,
+				B0BC3C45182077B900315EAE /* MPTChatCell.m in Sources */,
+				B0BC3C42182077A800315EAE /* MPTChatViewController.m in Sources */,
 				B0881422181A194D001FEC3C /* main.m in Sources */,
+				B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */,
+				B0BC3C491820780400315EAE /* ChatModal.xcdatamodeld in Sources */,
+				B0BC3C4C1820783300315EAE /* MPTChatDataSource.m in Sources */,
+				B0BC3C6B18209D5900315EAE /* MPTChatUser.m in Sources */,
+				B0BC3C6818209D5800315EAE /* MPTChatMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +531,7 @@
 				B0881446181A194D001FEC3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0881447181A194D001FEC3C /* Build configuration list for PBXNativeTarget "MultiPeerTestTests" */ = {
 			isa = XCConfigurationList;
@@ -469,8 +540,22 @@
 				B0881449181A194D001FEC3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B0BC3C471820780400315EAE /* ChatModal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B0BC3C481820780400315EAE /* ChatModal.xcdatamodel */,
+			);
+			currentVersion = B0BC3C481820780400315EAE /* ChatModal.xcdatamodel */;
+			path = ChatModal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B088140A181A194D001FEC3C /* Project object */;
 }
