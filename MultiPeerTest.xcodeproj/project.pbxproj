@@ -28,6 +28,14 @@
 		B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C5518207BBB00315EAE /* MPTDataController.m */; };
 		B0BC3C6818209D5800315EAE /* MPTChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6718209D5800315EAE /* MPTChatMessage.m */; };
 		B0BC3C6B18209D5900315EAE /* MPTChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6A18209D5900315EAE /* MPTChatUser.m */; };
+		B0BC3C6F1820B0A100315EAE /* MPTChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6E1820B0A100315EAE /* MPTChatController.m */; };
+		B0BC3C711821BF7700315EAE /* MPTChatBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BC3C701821BF7700315EAE /* MPTChatBar.xib */; };
+		B0BC3C741821C00E00315EAE /* MPTChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C731821C00E00315EAE /* MPTChatBar.m */; };
+		B0BC3C781821C89400315EAE /* MPTMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C771821C89400315EAE /* MPTMainMenuViewController.m */; };
+		B0BC3C821821CA3400315EAE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B0BC3C7B1821CA3400315EAE /* README.md */; };
+		B0BC3C831821CA3400315EAE /* RIButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C7D1821CA3400315EAE /* RIButtonItem.m */; };
+		B0BC3C841821CA3400315EAE /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C7F1821CA3400315EAE /* UIActionSheet+Blocks.m */; };
+		B0BC3C851821CA3400315EAE /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C811821CA3400315EAE /* UIAlertView+Blocks.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +80,20 @@
 		B0BC3C6718209D5800315EAE /* MPTChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatMessage.m; sourceTree = "<group>"; };
 		B0BC3C6918209D5900315EAE /* MPTChatUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatUser.h; sourceTree = "<group>"; };
 		B0BC3C6A18209D5900315EAE /* MPTChatUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatUser.m; sourceTree = "<group>"; };
+		B0BC3C6D1820B0A100315EAE /* MPTChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatController.h; sourceTree = "<group>"; };
+		B0BC3C6E1820B0A100315EAE /* MPTChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatController.m; sourceTree = "<group>"; };
+		B0BC3C701821BF7700315EAE /* MPTChatBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPTChatBar.xib; sourceTree = "<group>"; };
+		B0BC3C721821C00E00315EAE /* MPTChatBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatBar.h; sourceTree = "<group>"; };
+		B0BC3C731821C00E00315EAE /* MPTChatBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatBar.m; sourceTree = "<group>"; };
+		B0BC3C761821C89400315EAE /* MPTMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTMainMenuViewController.h; sourceTree = "<group>"; };
+		B0BC3C771821C89400315EAE /* MPTMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTMainMenuViewController.m; sourceTree = "<group>"; };
+		B0BC3C7B1821CA3400315EAE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		B0BC3C7C1821CA3400315EAE /* RIButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RIButtonItem.h; sourceTree = "<group>"; };
+		B0BC3C7D1821CA3400315EAE /* RIButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RIButtonItem.m; sourceTree = "<group>"; };
+		B0BC3C7E1821CA3400315EAE /* UIActionSheet+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+Blocks.h"; sourceTree = "<group>"; };
+		B0BC3C7F1821CA3400315EAE /* UIActionSheet+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+Blocks.m"; sourceTree = "<group>"; };
+		B0BC3C801821CA3400315EAE /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
+		B0BC3C811821CA3400315EAE /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +156,10 @@
 			isa = PBXGroup;
 			children = (
 				B0BC3C3F1820779800315EAE /* Chat View Controller */,
+				B0BC3C751821C87D00315EAE /* Main Menu */,
 				B0BC3C6C18209DD700315EAE /* Communication Controller */,
 				B0BC3C46182077E400315EAE /* Models */,
+				B0BC3C791821CA3400315EAE /* Third Party */,
 				B0881424181A194D001FEC3C /* MPTAppDelegate.h */,
 				B0881425181A194D001FEC3C /* MPTAppDelegate.m */,
 				B0881427181A194D001FEC3C /* Main.storyboard */,
@@ -177,12 +201,15 @@
 		B0BC3C3F1820779800315EAE /* Chat View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B0BC3C40182077A800315EAE /* MPTChatViewController.h */,
-				B0BC3C41182077A800315EAE /* MPTChatViewController.m */,
+				B0BC3C721821C00E00315EAE /* MPTChatBar.h */,
+				B0BC3C731821C00E00315EAE /* MPTChatBar.m */,
+				B0BC3C701821BF7700315EAE /* MPTChatBar.xib */,
 				B0BC3C43182077B900315EAE /* MPTChatCell.h */,
 				B0BC3C44182077B900315EAE /* MPTChatCell.m */,
 				B0BC3C4A1820783300315EAE /* MPTChatDataSource.h */,
 				B0BC3C4B1820783300315EAE /* MPTChatDataSource.m */,
+				B0BC3C40182077A800315EAE /* MPTChatViewController.h */,
+				B0BC3C41182077A800315EAE /* MPTChatViewController.m */,
 			);
 			path = "Chat View Controller";
 			sourceTree = "<group>";
@@ -212,8 +239,41 @@
 		B0BC3C6C18209DD700315EAE /* Communication Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B0BC3C6D1820B0A100315EAE /* MPTChatController.h */,
+				B0BC3C6E1820B0A100315EAE /* MPTChatController.m */,
 			);
 			path = "Communication Controller";
+			sourceTree = "<group>";
+		};
+		B0BC3C751821C87D00315EAE /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC3C761821C89400315EAE /* MPTMainMenuViewController.h */,
+				B0BC3C771821C89400315EAE /* MPTMainMenuViewController.m */,
+			);
+			path = "Main Menu";
+			sourceTree = "<group>";
+		};
+		B0BC3C791821CA3400315EAE /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC3C7A1821CA3400315EAE /* UIAlertView+Blocks */,
+			);
+			path = "Third Party";
+			sourceTree = "<group>";
+		};
+		B0BC3C7A1821CA3400315EAE /* UIAlertView+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC3C7B1821CA3400315EAE /* README.md */,
+				B0BC3C7C1821CA3400315EAE /* RIButtonItem.h */,
+				B0BC3C7D1821CA3400315EAE /* RIButtonItem.m */,
+				B0BC3C7E1821CA3400315EAE /* UIActionSheet+Blocks.h */,
+				B0BC3C7F1821CA3400315EAE /* UIActionSheet+Blocks.m */,
+				B0BC3C801821CA3400315EAE /* UIAlertView+Blocks.h */,
+				B0BC3C811821CA3400315EAE /* UIAlertView+Blocks.m */,
+			);
+			path = "UIAlertView+Blocks";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +354,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B088142E181A194D001FEC3C /* Images.xcassets in Resources */,
+				B0BC3C711821BF7700315EAE /* MPTChatBar.xib in Resources */,
+				B0BC3C821821CA3400315EAE /* README.md in Resources */,
 				B0881420181A194D001FEC3C /* InfoPlist.strings in Resources */,
 				B0881429181A194D001FEC3C /* Main.storyboard in Resources */,
 			);
@@ -314,6 +376,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0BC3C831821CA3400315EAE /* RIButtonItem.m in Sources */,
+				B0BC3C841821CA3400315EAE /* UIActionSheet+Blocks.m in Sources */,
 				B0881426181A194D001FEC3C /* MPTAppDelegate.m in Sources */,
 				B0BC3C45182077B900315EAE /* MPTChatCell.m in Sources */,
 				B0BC3C42182077A800315EAE /* MPTChatViewController.m in Sources */,
@@ -321,6 +385,10 @@
 				B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */,
 				B0BC3C491820780400315EAE /* ChatModal.xcdatamodeld in Sources */,
 				B0BC3C4C1820783300315EAE /* MPTChatDataSource.m in Sources */,
+				B0BC3C6F1820B0A100315EAE /* MPTChatController.m in Sources */,
+				B0BC3C781821C89400315EAE /* MPTMainMenuViewController.m in Sources */,
+				B0BC3C741821C00E00315EAE /* MPTChatBar.m in Sources */,
+				B0BC3C851821CA3400315EAE /* UIAlertView+Blocks.m in Sources */,
 				B0BC3C6B18209D5900315EAE /* MPTChatUser.m in Sources */,
 				B0BC3C6818209D5800315EAE /* MPTChatMessage.m in Sources */,
 			);

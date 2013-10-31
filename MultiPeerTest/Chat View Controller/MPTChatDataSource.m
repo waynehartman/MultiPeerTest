@@ -103,14 +103,19 @@ static NSString *systemChateCellID = @"systemChatCell";
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     switch(type) {
         case NSFetchedResultsChangeInsert: {
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
-            [self.tableView scrollToRowAtIndexPath:newIndexPath
-                                  atScrollPosition:UITableViewScrollPositionBottom
-                                          animated:YES];
+            MPTChatMessage *message = anObject;
+
+            UITableViewRowAnimation animation = [message.user.isLocalUser boolValue] ? UITableViewRowAnimationRight : UITableViewRowAnimationLeft;
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:animation];
+            double delayInSeconds = 0.25;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self.tableView scrollToRowAtIndexPath:newIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            });
         }
         break;
         case NSFetchedResultsChangeDelete: {
-            //  DO NOTHING
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
         }
         break;
         case NSFetchedResultsChangeUpdate: {

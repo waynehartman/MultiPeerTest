@@ -21,7 +21,7 @@
 
 - (MPTChatUser *)chatUserWithPeerID:(NSString *)peerID inManagedObjectContext:(NSManagedObjectContext *)context{
     return [self managedObjectForEntityName:NSStringFromClass([MPTChatUser class])
-                              withPredicate:[NSPredicate predicateWithFormat:@"peerID = %@", peerID]
+                              withPredicate:[NSPredicate predicateWithFormat:@"username == %@", peerID]
                      inManagedObjectContext:context];
 }
 
@@ -45,9 +45,29 @@ static MPTDataController *sharedController;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedController = [[MPTDataController alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:sharedController
+                                                 selector:@selector(contextDidSave:)
+                                                     name:NSManagedObjectContextDidSaveNotification
+                                                   object:nil];
     });
 
     return sharedController;
+}
+
+- (void)deleteAllChatMessagesInManagedObjectContext:(NSManagedObjectContext *)context {
+    if (context == nil) {
+        context = self.managedObjectContext;
+    }
+
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:NSStringFromClass([MPTChatMessage class])];
+
+    NSArray *messages =[context executeFetchRequest:request error:nil];
+
+    for (MPTChatMessage *message in messages) {
+        [context deleteObject:message];
+    }
+
+    [context save:nil];
 }
 
 #pragma mark - Generic CRUD

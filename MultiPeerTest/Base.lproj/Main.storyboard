@@ -4,7 +4,69 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
     </dependencies>
     <scenes>
-        <!--Chat View Controller - Multi-Peer Chat-->
+        <!--Main Menu View Controller - Multi-Peer Chat-->
+        <scene sceneID="Q1f-X4-k8h">
+            <objects>
+                <tableViewController id="7yU-Bt-fGd" customClass="MPTMainMenuViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Osb-b7-Z9r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="B1l-AJ-Qgk">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="N10-R0-Tc1" style="IBUITableViewCellStyleDefault" id="wt1-JW-Xtd">
+                                        <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wt1-JW-Xtd" id="Kal-3y-H6s">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Advertise" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N10-R0-Tc1">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="I4Z-Nq-IPC" style="IBUITableViewCellStyleDefault" id="Hwi-Yz-YLK">
+                                        <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hwi-Yz-YLK" id="azf-va-jaw">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Browse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I4Z-Nq-IPC">
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="7yU-Bt-fGd" id="gCj-xh-2Ev"/>
+                            <outlet property="delegate" destination="7yU-Bt-fGd" id="43S-Ln-dfc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Multi-Peer Chat" id="LTd-TO-lVs"/>
+                    <connections>
+                        <segue destination="Uuk-gd-z9Q" kind="modal" identifier="SEGUE_SHOW_CHAT_VIEW" id="qvf-2j-Fso"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C32-4C-wiI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="99"/>
+        </scene>
+        <!--Chat View Controller - Chat Session-->
         <scene sceneID="hmf-RA-gAl">
             <objects>
                 <tableViewController id="YUL-ip-JcA" customClass="MPTChatViewController" sceneMemberID="viewController">
@@ -122,7 +184,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wayne joined the session." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TQ-Yz-uWC">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wayne joined the session." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0TQ-Yz-uWC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
@@ -132,7 +194,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="0TQ-Yz-uWC" firstAttribute="top" secondItem="4SG-s7-BET" secondAttribute="top" id="6lh-Vy-D7b"/>
-                                        <constraint firstAttribute="bottom" secondItem="0TQ-Yz-uWC" secondAttribute="bottom" constant="-1" id="MZX-vH-OpE"/>
+                                        <constraint firstAttribute="bottom" secondItem="0TQ-Yz-uWC" secondAttribute="bottom" id="MZX-vH-OpE"/>
                                         <constraint firstAttribute="trailing" secondItem="0TQ-Yz-uWC" secondAttribute="trailing" id="mSZ-kl-Hvn"/>
                                         <constraint firstItem="0TQ-Yz-uWC" firstAttribute="leading" secondItem="4SG-s7-BET" secondAttribute="leading" id="ojP-W2-R65"/>
                                     </constraints>
@@ -148,9 +210,16 @@
                             <outlet property="delegate" destination="nZr-ye-Kgy" id="mXi-wg-ZrG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Multi-Peer Chat" id="AYD-6V-yxL"/>
+                    <navigationItem key="navigationItem" title="Chat Session" id="AYD-6V-yxL">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="esq-rC-RQK">
+                            <connections>
+                                <action selector="didSelectClearButton:" destination="YUL-ip-JcA" id="yR6-D3-Hch"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dataSource" destination="nZr-ye-Kgy" id="6Aj-BN-k2d"/>
+                        <outlet property="firstResponderField" destination="NTB-8t-BYF" id="ohO-nl-kON"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaX-AM-Vn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -159,8 +228,17 @@
                         <outlet property="tableView" destination="CIH-Bw-daC" id="G6N-ez-TJ7"/>
                     </connections>
                 </customObject>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="NTB-8t-BYF">
+                    <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="YUL-ip-JcA" id="zk4-Lm-VP4"/>
+                    </connections>
+                </textField>
             </objects>
-            <point key="canvasLocation" x="746" y="195"/>
+            <point key="canvasLocation" x="1640" y="406"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qoK-GC-3DZ">
@@ -173,12 +251,30 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="YUL-ip-JcA" kind="relationship" relationship="rootViewController" id="3cX-A0-z1N"/>
+                        <segue destination="7yU-Bt-fGd" kind="relationship" relationship="rootViewController" id="8Bs-Q7-ohh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4i-91-cNy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="298" y="195"/>
+            <point key="canvasLocation" x="77" y="99"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1Da-zU-YHP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Uuk-gd-z9Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a0I-NF-9Z8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YUL-ip-JcA" kind="relationship" relationship="rootViewController" id="civ-Hy-QWy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ylK-6Q-Oaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1114" y="406"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

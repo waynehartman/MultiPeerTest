@@ -26,4 +26,6 @@ typedef void(^ChatMessageMapper)(MPTChatMessage *chatMessage);
 - (MPTChatMessage *)createChatMessageWithMapping:(ChatMessageMapper)mapper inManagedObjectContext:(NSManagedObjectContext *)context;
 - (MPTChatUser *)createChatUserWithMapping:(ChatUserMapper)mapper inManagedObjectContext:(NSManagedObjectContext *)context;
 
+- (void)deleteAllChatMessagesInManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end
