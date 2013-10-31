@@ -96,7 +96,7 @@ static MPTChatController *singleton;
 
     [self ingestMessage:message fromPeer:self.peerID];
 
-    if (self.currentSession.connectedPeers > 0) {
+    if (self.currentSession.connectedPeers.count > 0) {
         NSDictionary *messageDict = @{ MESSAGE_KEY_MESSAGE : message };
         NSData *messageData = [NSJSONSerialization dataWithJSONObject:messageDict options:0 error:nil];
 

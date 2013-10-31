@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *messageLabel;
 @property (strong, nonatomic) IBOutlet UILabel *userLabel;
+@property (strong, nonatomic) IBOutlet UIButton *attachmentPreviewButton;
 
 @end
 
@@ -23,6 +24,10 @@
 
     self.messageLabel.text = message.messageText;
     self.userLabel.text = message.user.username;
+}
+
+- (IBAction)didSelectPreviewButton:(id)sender {
+    [self.delegate chatCell:self didSelectAttachmentForMessage:self.message];
 }
 
 @end

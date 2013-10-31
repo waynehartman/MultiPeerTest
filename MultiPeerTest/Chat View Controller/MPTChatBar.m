@@ -43,6 +43,7 @@
     }
 
     self.textField.text = @"";
+    self.sendButton.enabled = NO;
 }
 
 - (BOOL)canBecomeFirstResponder {
