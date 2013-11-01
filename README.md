@@ -9,10 +9,9 @@ See LICENSE file for licensing
 
 
 
-Third Party Library Usage
+Third Party Library Usage:
 
 UIAlertView+Blocks.h
-----------------------------
 
 Copyright (C) 2011 by Random Ideas, LLC
 
