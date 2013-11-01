@@ -8,6 +8,7 @@
 
 #import "MPTChatController.h"
 #import "MPTDataController.h"
+#import "UIImage+Resize.h"
 
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
@@ -87,6 +88,7 @@ static MPTChatController *singleton;
 
 - (void)endSession {
     [self.advertiser stopAdvertisingPeer];
+    [self.currentSession disconnect];
 }
 
 - (void)sendMessage:(NSString *)message {
@@ -94,7 +96,7 @@ static MPTChatController *singleton;
         return;
     }
 
-    [self ingestMessage:message fromPeer:self.peerID];
+    [self ingestMessage:message attachmentURL:nil thumbnailURL:nil fromPeer:self.peerID];
 
     if (self.currentSession.connectedPeers.count > 0) {
         NSDictionary *messageDict = @{ MESSAGE_KEY_MESSAGE : message };
@@ -113,7 +115,68 @@ static MPTChatController *singleton;
     }
 }
 
-- (void)ingestMessage:(NSString *)message fromPeer:(MCPeerID *)peerID {
+- (void)sendPicture:(UIImage *)image {
+    //  Block we'll call for sending the message when it has been prepared
+    void(^sendImage)(NSURL *) = ^(NSURL *imageURL) {
+        for (MCPeerID *peer in self.currentSession.connectedPeers) {
+            [self.currentSession sendResourceAtURL:imageURL
+                                          withName:@"image.jpg"
+                                            toPeer:peer
+                             withCompletionHandler:^(NSError *error) {
+                                 if (error) {
+                                     NSLog(@"Error sending image! %@", error);
+                                 }
+                             }];
+        }
+    };
+
+    //  Do all our work on a background thread
+    dispatch_async(dispatch_queue_create("com.waynehartman.multipeertest.imageprocessing", NULL), ^{
+        NSURL *thumbnailURL = [self createFileURL];
+        NSURL *scaledURL = [self createFileURL];
+
+        CGFloat scaleFactor = 0.33f;
+
+        NSData *thumbnailData = nil;
+        NSData *scaledImageData = nil;
+
+        //  Using an autorelease pool to flush memory we don't need anymore
+        @autoreleasepool {
+            UIImage *scaledImage = [image resizedImage:CGSizeMake(image.size.width * scaleFactor, image.size.height * scaleFactor)
+                                  interpolationQuality:kCGInterpolationHigh];
+            UIImage *thumbnail = [image thumbnailImage:150
+                                     transparentBorder:0
+                                          cornerRadius:0
+                                  interpolationQuality:kCGInterpolationMedium];
+            thumbnailData = UIImageJPEGRepresentation(thumbnail, 0.75f);
+            scaledImageData = UIImageJPEGRepresentation(scaledImage, 0.75f);
+        }
+
+        //  Write everything to disk so we can reference it later
+        NSFileManager *fm = [NSFileManager defaultManager];
+
+        [fm createFileAtPath:scaledURL.path
+                    contents:scaledImageData
+                  attributes:nil];
+        [fm createFileAtPath:thumbnailURL.path
+                    contents:thumbnailData
+                  attributes:nil];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self ingestMessage:nil attachmentURL:scaledURL thumbnailURL:thumbnailURL fromPeer:self.peerID];
+            sendImage(scaledURL);
+        });
+    });
+}
+
+- (NSURL *)createFileURL {
+    NSString *fileName = [[NSUUID UUID] UUIDString];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@.jpg", NSTemporaryDirectory(), fileName];
+
+    return [NSURL fileURLWithPath:filePath];
+}
+
+- (void)ingestMessage:(NSString *)message attachmentURL:(NSURL *)attachmentURL thumbnailURL:(NSURL *)thumbnailURL fromPeer:(MCPeerID *)peerID {
     NSManagedObjectContext *context = [[MPTDataController sharedController] createManagedObjectContextForBackgroundThread];
 
     [context performBlock:^{
@@ -133,11 +196,13 @@ static MPTChatController *singleton;
             chatMessage.user = user;
             chatMessage.messageText = message;
             chatMessage.receivedTime = [NSDate date];
+            chatMessage.attachmentUri = attachmentURL.path;
+            chatMessage.attachmentThumbnailUri = thumbnailURL.path;
         } inManagedObjectContext:context];
 
         NSError *error = nil;
         BOOL saved = [context save:&error];
-        
+
         if (!saved) {
             NSLog(@"error ingesting message! %@", error);
         }
@@ -179,7 +244,7 @@ static MPTChatController *singleton;
 
     NSString *message = [NSString stringWithFormat:@"%@ %@...", peerID.displayName, action];
 
-    [self ingestMessage:message fromPeer:nil];
+    [self ingestMessage:message attachmentURL:nil thumbnailURL:nil fromPeer:nil];
 }
 
 // Received data from remote peer
@@ -192,7 +257,7 @@ static MPTChatController *singleton;
     if (!recievedData) {
         NSLog(@"error decoding message! %@", error);
     } else {
-        [self ingestMessage:recievedData[MESSAGE_KEY_MESSAGE] fromPeer:peerID];
+        [self ingestMessage:recievedData[MESSAGE_KEY_MESSAGE] attachmentURL:nil thumbnailURL:nil fromPeer:peerID];
     }
 }
 
@@ -203,12 +268,42 @@ static MPTChatController *singleton;
 
 // Start receiving a resource from remote peer
 - (void)session:(MCSession *)session didStartReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID withProgress:(NSProgress *)progress {
-    
+    NSLog(@"downloading file: %f%%", progress.fractionCompleted);
 }
 
 // Finished receiving a resource from remote peer and saved the content in a temporary location - the app is responsible for moving the file to a permanent location within its sandbox
 - (void)session:(MCSession *)session didFinishReceivingResourceWithName:(NSString *)resourceName fromPeer:(MCPeerID *)peerID atURL:(NSURL *)localURL withError:(NSError *)error {
+    NSLog(@"finished receiving file...");
     
+    if (error) {
+        NSLog(@"Error when receiving file! %@", error);
+    } else {
+        dispatch_async(dispatch_queue_create("com.waynehartman.multipeertest.imagereception", NULL), ^{
+            NSData *imageData = nil;
+            NSData *thumbnailData = nil;
+
+            @autoreleasepool {
+                UIImage *image = [UIImage imageWithContentsOfFile:localURL.path];
+                UIImage *thumbnail = [image thumbnailImage:150
+                                         transparentBorder:0
+                                              cornerRadius:0
+                                      interpolationQuality:kCGInterpolationMedium];
+                imageData = UIImageJPEGRepresentation(image, 1.0f);
+                thumbnailData = UIImageJPEGRepresentation(thumbnail, 1.0f);
+            }
+
+            NSURL *imageURL = [self createFileURL];
+            NSURL *thumbnailURL = [self createFileURL];
+
+            NSFileManager *fm = [NSFileManager defaultManager];
+            [fm createFileAtPath:imageURL.path contents:imageData attributes:nil];
+            [fm createFileAtPath:thumbnailURL.path contents:thumbnailData attributes:nil];
+
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self ingestMessage:nil attachmentURL:imageURL thumbnailURL:thumbnailURL fromPeer:peerID];
+            });
+        });
+    }
 }
 
 #pragma mark - MCNearbyServiceBrowserDelegate
@@ -225,7 +320,7 @@ static MPTChatController *singleton;
 - (void)browser:(MCNearbyServiceBrowser *)browser lostPeer:(MCPeerID *)peerID {
     NSString *message = [NSString stringWithFormat:@"%@ was disconnected...", peerID.displayName];
 
-    [self ingestMessage:message fromPeer:nil];
+    [self ingestMessage:message attachmentURL:nil thumbnailURL:nil fromPeer:nil];
 }
 
 - (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error {

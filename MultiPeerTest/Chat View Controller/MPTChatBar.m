@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *textField;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sendButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 
 @end
 
@@ -28,22 +29,13 @@
             break;
         }
     }
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:chatBar
                                              selector:@selector(textFieldTextDidChange:)
                                                  name:UITextFieldTextDidChangeNotification
                                                object:chatBar.textField];
 
     return chatBar;
-}
-
-- (IBAction)didSelectSendButton:(id)sender {
-    if (self.chatHandler) {
-        self.chatHandler([self.textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]);
-    }
-
-    self.textField.text = @"";
-    self.sendButton.enabled = NO;
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -68,6 +60,23 @@
     isValid = message.length > 0;
 
     return isValid;
+}
+
+#pragma mark - Actions
+
+- (IBAction)didSelectSendButton:(id)sender {
+    if (self.chatHandler) {
+        self.chatHandler([self.textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]);
+    }
+
+    self.textField.text = @"";
+    self.sendButton.enabled = NO;
+}
+
+- (IBAction)didSelectCameraButton:(id)sender {
+    if (self.cameraHandler) {
+        self.cameraHandler();
+    }
 }
 
 #pragma mark - UITextFieldDelegate

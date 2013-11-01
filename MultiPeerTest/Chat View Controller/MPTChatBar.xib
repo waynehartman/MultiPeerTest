@@ -10,9 +10,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <items>
+                <barButtonItem style="plain" systemItem="camera" id="rRm-nX-qhL">
+                    <connections>
+                        <action selector="didSelectCameraButton:" destination="Zyy-wJ-HrU" id="Xt2-57-y13"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem style="plain" systemItem="flexibleSpace" id="WPp-Cy-gb5"/>
                 <barButtonItem style="plain" id="ON4-KE-e2b">
                     <textField key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chat Message" minimumFontSize="17" id="upt-4Z-9h0">
-                        <rect key="frame" x="16" y="7" width="226" height="30"/>
+                        <rect key="frame" x="50" y="7" width="203" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
@@ -22,13 +28,14 @@
                     </textField>
                 </barButtonItem>
                 <barButtonItem style="plain" systemItem="flexibleSpace" id="TgM-tz-UQB"/>
-                <barButtonItem enabled="NO" title="Send" id="4Hx-yY-7SF">
+                <barButtonItem enabled="NO" title="Send" width="42" id="4Hx-yY-7SF">
                     <connections>
                         <action selector="didSelectSendButton:" destination="Zyy-wJ-HrU" id="weC-rz-fjc"/>
                     </connections>
                 </barButtonItem>
             </items>
             <connections>
+                <outlet property="cameraButton" destination="rRm-nX-qhL" id="Fw1-LU-u8a"/>
                 <outlet property="sendButton" destination="4Hx-yY-7SF" id="JKe-i5-3vc"/>
                 <outlet property="textField" destination="upt-4Z-9h0" id="T7D-Rf-Xz8"/>
             </connections>

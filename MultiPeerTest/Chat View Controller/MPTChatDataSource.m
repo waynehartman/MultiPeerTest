@@ -10,7 +10,7 @@
 #import "MPTDataController.h"
 #import "MPTChatCell.h"
 
-@interface MPTChatDataSource () <NSFetchedResultsControllerDelegate>
+@interface MPTChatDataSource () <NSFetchedResultsControllerDelegate, MPTChatCellDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *messagesFRC;
 
@@ -50,8 +50,11 @@
 
 static NSString *userChatCellID = @"userChatCell";
 static NSString *peerChatCellID = @"peerChatCell";
+
 static NSString *systemChateCellID = @"systemChatCell";
 
+static NSString *userAttachmentChatCellID = @"userAttachmentChatCell";
+static NSString *peerAttachmentChatCellID = @"peerAttachmentChatCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger count = [self.messagesFRC.sections[section] numberOfObjects];
@@ -60,12 +63,13 @@ static NSString *systemChateCellID = @"systemChatCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MPTChatMessage *message = [self.messagesFRC objectAtIndexPath:indexPath];
-    
+
     NSString *cellID = [self cellIdForMessage:message];
 
     MPTChatCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
     cell.message = message;
-    
+    cell.delegate = self;
+
     return cell;
 }
 
@@ -73,8 +77,12 @@ static NSString *systemChateCellID = @"systemChatCell";
     NSString *cellID = nil;
     if (message.user == nil) {
         cellID = systemChateCellID;
+    } else if ([[message.user isLocalUser] boolValue] && message.attachmentUri) {
+        cellID = userAttachmentChatCellID;
     } else if ([[message.user isLocalUser] boolValue]) {
         cellID = userChatCellID;
+    } else if (message.attachmentUri) {
+        cellID = peerAttachmentChatCellID;
     } else {
         cellID = peerChatCellID;
     }
@@ -84,10 +92,10 @@ static NSString *systemChateCellID = @"systemChatCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     MPTChatMessage *message = [self.messagesFRC objectAtIndexPath:indexPath];
-    
+
     MPTChatCell *cell = [tableView dequeueReusableCellWithIdentifier:[self cellIdForMessage:message]];
     cell.message = message;
-    
+
     CGSize size = [cell.sizingView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
 
     return size.height + 20;
@@ -131,6 +139,14 @@ static NSString *systemChateCellID = @"systemChatCell";
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
+}
+
+#pragma mark - MPTChatCellDelegate
+
+- (void)chatCell:(MPTChatCell *)cell didSelectAttachmentForMessage:(MPTChatMessage *)message {
+    if (self.attachmentPreviewHandler) {
+        self.attachmentPreviewHandler(message.attachmentUri);
+    }
 }
 
 @end

@@ -7,18 +7,23 @@
 //
 
 #import "MPTChatViewController.h"
+#import "MPTImageViewController.h"
 #import "MPTChatDataSource.h"
 #import "MPTChatBar.h"
 #import "MPTChatController.h"
 #import "MPTDataController.h"
 
-@interface MPTChatViewController () <UITextFieldDelegate>
+#import "UIActionSheet+Blocks.h"
+
+@interface MPTChatViewController () <UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong) IBOutlet MPTChatDataSource *dataSource;
 @property (strong, nonatomic) IBOutlet UITextField *firstResponderField;
 @property (nonatomic, strong) MPTChatBar *chatBar;
 
 @end
+
+#define SEGUE_IMAGE_PREVIEW @"SEGUE_IMAGE_PREVIEW"
 
 @implementation MPTChatViewController
 
@@ -31,6 +36,20 @@
     self.chatBar.chatHandler = ^(NSString *message) {
         [[MPTChatController sharedController] sendMessage:message];
     };
+
+    __weak MPTChatViewController *weakSelf = self;
+
+    self.chatBar.cameraHandler = ^{
+        UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+        pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        pickerController.delegate = weakSelf;
+
+        [weakSelf presentViewController:pickerController animated:YES completion:NULL];
+    };
+    
+    self.dataSource.attachmentPreviewHandler = ^(NSString *path) {
+        [weakSelf performSegueWithIdentifier:SEGUE_IMAGE_PREVIEW sender:path];
+    };
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -38,6 +57,19 @@
 
     [self.navigationController.view insertSubview:self.firstResponderField atIndex:0];
     [self.firstResponderField becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [self.chatBar resignFirstResponder];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:SEGUE_IMAGE_PREVIEW]) {
+        MPTImageViewController *imageVC = segue.destinationViewController;
+        imageVC.image = [UIImage imageWithContentsOfFile:sender];
+    }
 }
 
 #pragma mark - Actions
@@ -56,6 +88,14 @@
         self.firstResponderField.hidden = YES;
         [self.chatBar becomeFirstResponder];
     });
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissViewControllerAnimated:YES completion:NULL];
+
+    [[MPTChatController sharedController] sendPicture:info[UIImagePickerControllerOriginalImage]];
 }
 
 @end

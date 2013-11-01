@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B0396E7A1823345300AD8B1F /* MPTChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B0396E791823345300AD8B1F /* MPTChatMessage.m */; };
+		B0396E7D1823345400AD8B1F /* MPTChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B0396E7C1823345400AD8B1F /* MPTChatUser.m */; };
+		B0396E841823372C00AD8B1F /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = B0396E831823372C00AD8B1F /* UIImage+Resize.m */; };
+		B0396E8918233B2E00AD8B1F /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = B0396E8618233B2E00AD8B1F /* UIImage+Alpha.m */; };
+		B0396E8A18233B2E00AD8B1F /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B0396E8818233B2E00AD8B1F /* UIImage+RoundedCorner.m */; };
+		B0396E8E182350B800AD8B1F /* MPTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0396E8D182350B800AD8B1F /* MPTImageViewController.m */; };
 		B0881416181A194D001FEC3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0881415181A194D001FEC3C /* Foundation.framework */; };
 		B0881418181A194D001FEC3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0881417181A194D001FEC3C /* CoreGraphics.framework */; };
 		B088141A181A194D001FEC3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0881419181A194D001FEC3C /* UIKit.framework */; };
@@ -26,8 +32,6 @@
 		B0BC3C491820780400315EAE /* ChatModal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C471820780400315EAE /* ChatModal.xcdatamodeld */; };
 		B0BC3C4C1820783300315EAE /* MPTChatDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C4B1820783300315EAE /* MPTChatDataSource.m */; };
 		B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C5518207BBB00315EAE /* MPTDataController.m */; };
-		B0BC3C6818209D5800315EAE /* MPTChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6718209D5800315EAE /* MPTChatMessage.m */; };
-		B0BC3C6B18209D5900315EAE /* MPTChatUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6A18209D5900315EAE /* MPTChatUser.m */; };
 		B0BC3C6F1820B0A100315EAE /* MPTChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C6E1820B0A100315EAE /* MPTChatController.m */; };
 		B0BC3C711821BF7700315EAE /* MPTChatBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0BC3C701821BF7700315EAE /* MPTChatBar.xib */; };
 		B0BC3C741821C00E00315EAE /* MPTChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C731821C00E00315EAE /* MPTChatBar.m */; };
@@ -49,6 +53,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B0396E781823345300AD8B1F /* MPTChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatMessage.h; sourceTree = "<group>"; };
+		B0396E791823345300AD8B1F /* MPTChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatMessage.m; sourceTree = "<group>"; };
+		B0396E7B1823345400AD8B1F /* MPTChatUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatUser.h; sourceTree = "<group>"; };
+		B0396E7C1823345400AD8B1F /* MPTChatUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatUser.m; sourceTree = "<group>"; };
+		B0396E821823372C00AD8B1F /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		B0396E831823372C00AD8B1F /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		B0396E8518233B2E00AD8B1F /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		B0396E8618233B2E00AD8B1F /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		B0396E8718233B2E00AD8B1F /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		B0396E8818233B2E00AD8B1F /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
+		B0396E8C182350B800AD8B1F /* MPTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTImageViewController.h; sourceTree = "<group>"; };
+		B0396E8D182350B800AD8B1F /* MPTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTImageViewController.m; sourceTree = "<group>"; };
 		B0881412181A194D001FEC3C /* MultiPeerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiPeerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0881415181A194D001FEC3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0881417181A194D001FEC3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -76,10 +92,6 @@
 		B0BC3C4B1820783300315EAE /* MPTChatDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatDataSource.m; sourceTree = "<group>"; };
 		B0BC3C5418207BBB00315EAE /* MPTDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTDataController.h; sourceTree = "<group>"; };
 		B0BC3C5518207BBB00315EAE /* MPTDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTDataController.m; sourceTree = "<group>"; };
-		B0BC3C6618209D5800315EAE /* MPTChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatMessage.h; sourceTree = "<group>"; };
-		B0BC3C6718209D5800315EAE /* MPTChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatMessage.m; sourceTree = "<group>"; };
-		B0BC3C6918209D5900315EAE /* MPTChatUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatUser.h; sourceTree = "<group>"; };
-		B0BC3C6A18209D5900315EAE /* MPTChatUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatUser.m; sourceTree = "<group>"; };
 		B0BC3C6D1820B0A100315EAE /* MPTChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPTChatController.h; sourceTree = "<group>"; };
 		B0BC3C6E1820B0A100315EAE /* MPTChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPTChatController.m; sourceTree = "<group>"; };
 		B0BC3C701821BF7700315EAE /* MPTChatBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPTChatBar.xib; sourceTree = "<group>"; };
@@ -121,6 +133,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0396E811823372C00AD8B1F /* UIImage Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B0396E8518233B2E00AD8B1F /* UIImage+Alpha.h */,
+				B0396E8618233B2E00AD8B1F /* UIImage+Alpha.m */,
+				B0396E821823372C00AD8B1F /* UIImage+Resize.h */,
+				B0396E831823372C00AD8B1F /* UIImage+Resize.m */,
+				B0396E8718233B2E00AD8B1F /* UIImage+RoundedCorner.h */,
+				B0396E8818233B2E00AD8B1F /* UIImage+RoundedCorner.m */,
+			);
+			path = "UIImage Categories";
+			sourceTree = "<group>";
+		};
+		B0396E8B182350A300AD8B1F /* Image Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				B0396E8C182350B800AD8B1F /* MPTImageViewController.h */,
+				B0396E8D182350B800AD8B1F /* MPTImageViewController.m */,
+			);
+			path = "Image Viewer";
+			sourceTree = "<group>";
+		};
 		B0881409181A194D001FEC3C = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +235,7 @@
 		B0BC3C3F1820779800315EAE /* Chat View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B0396E8B182350A300AD8B1F /* Image Viewer */,
 				B0BC3C721821C00E00315EAE /* MPTChatBar.h */,
 				B0BC3C731821C00E00315EAE /* MPTChatBar.m */,
 				B0BC3C701821BF7700315EAE /* MPTChatBar.xib */,
@@ -228,10 +263,10 @@
 		B0BC3C4D1820793800315EAE /* Managed Objects */ = {
 			isa = PBXGroup;
 			children = (
-				B0BC3C6618209D5800315EAE /* MPTChatMessage.h */,
-				B0BC3C6718209D5800315EAE /* MPTChatMessage.m */,
-				B0BC3C6918209D5900315EAE /* MPTChatUser.h */,
-				B0BC3C6A18209D5900315EAE /* MPTChatUser.m */,
+				B0396E781823345300AD8B1F /* MPTChatMessage.h */,
+				B0396E791823345300AD8B1F /* MPTChatMessage.m */,
+				B0396E7B1823345400AD8B1F /* MPTChatUser.h */,
+				B0396E7C1823345400AD8B1F /* MPTChatUser.m */,
 			);
 			path = "Managed Objects";
 			sourceTree = "<group>";
@@ -258,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B0BC3C7A1821CA3400315EAE /* UIAlertView+Blocks */,
+				B0396E811823372C00AD8B1F /* UIImage Categories */,
 			);
 			path = "Third Party";
 			sourceTree = "<group>";
@@ -380,17 +416,21 @@
 				B0BC3C841821CA3400315EAE /* UIActionSheet+Blocks.m in Sources */,
 				B0881426181A194D001FEC3C /* MPTAppDelegate.m in Sources */,
 				B0BC3C45182077B900315EAE /* MPTChatCell.m in Sources */,
+				B0396E8918233B2E00AD8B1F /* UIImage+Alpha.m in Sources */,
+				B0396E8E182350B800AD8B1F /* MPTImageViewController.m in Sources */,
+				B0396E7A1823345300AD8B1F /* MPTChatMessage.m in Sources */,
 				B0BC3C42182077A800315EAE /* MPTChatViewController.m in Sources */,
 				B0881422181A194D001FEC3C /* main.m in Sources */,
 				B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */,
 				B0BC3C491820780400315EAE /* ChatModal.xcdatamodeld in Sources */,
+				B0396E8A18233B2E00AD8B1F /* UIImage+RoundedCorner.m in Sources */,
+				B0396E841823372C00AD8B1F /* UIImage+Resize.m in Sources */,
 				B0BC3C4C1820783300315EAE /* MPTChatDataSource.m in Sources */,
 				B0BC3C6F1820B0A100315EAE /* MPTChatController.m in Sources */,
 				B0BC3C781821C89400315EAE /* MPTMainMenuViewController.m in Sources */,
 				B0BC3C741821C00E00315EAE /* MPTChatBar.m in Sources */,
+				B0396E7D1823345400AD8B1F /* MPTChatUser.m in Sources */,
 				B0BC3C851821CA3400315EAE /* UIAlertView+Blocks.m in Sources */,
-				B0BC3C6B18209D5900315EAE /* MPTChatUser.m in Sources */,
-				B0BC3C6818209D5800315EAE /* MPTChatMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

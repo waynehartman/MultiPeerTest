@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void(^AttachmentPreviewHandler)(NSString *filePath);
+
 @interface MPTChatDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, copy) AttachmentPreviewHandler attachmentPreviewHandler;
 
 @end
