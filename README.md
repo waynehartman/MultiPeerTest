@@ -11,6 +11,8 @@ See LICENSE file for licensing
 
 Third Party Library Usage:
 
+-.-.-.-.-.-.-.-.-
+
 UIAlertView+Blocks.h
 
 Copyright (C) 2011 by Random Ideas, LLC
@@ -32,3 +34,13 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+-.-.-.-.-.-.-.-.-
+
+UIImage+Alpha.h
+
+Created by Trevor Harmon on 9/20/09.
+Free for personal or commercial use, with or without modification.
+No warranty is expressed or implied.
+
+-.-.-.-.-.-.-.-.-
