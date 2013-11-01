@@ -293,7 +293,7 @@
                     </connections>
                 </textField>
             </objects>
-            <point key="canvasLocation" x="1640" y="406"/>
+            <point key="canvasLocation" x="1675" y="406"/>
         </scene>
         <!--Image View Controller - Image-->
         <scene sceneID="X1z-YB-Wj3">
@@ -346,7 +346,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsP-fd-1o5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="825" y="406"/>
+            <point key="canvasLocation" x="796" y="406"/>
         </scene>
         <!--Main Menu View Controller - Multi-Peer Chat-->
         <scene sceneID="MJn-Vh-QFf">
