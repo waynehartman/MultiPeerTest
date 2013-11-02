@@ -33,11 +33,11 @@
     self.chatBar = [MPTChatBar chatBarWithNibName:@"MPTChatBar"];
     self.firstResponderField.inputAccessoryView = self.chatBar;
 
-    self.chatBar.chatHandler = ^(NSString *message) {
-        [[MPTChatController sharedController] sendMessage:message];
-    };
-
     __weak MPTChatViewController *weakSelf = self;
+
+    self.chatBar.chatHandler = ^(NSString *message) {
+        [weakSelf.chatController sendMessage:message];
+    };
 
     self.chatBar.cameraHandler = ^{
         UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
@@ -95,7 +95,11 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self dismissViewControllerAnimated:YES completion:NULL];
 
-    [[MPTChatController sharedController] sendPicture:info[UIImagePickerControllerOriginalImage]];
+    [self.chatController sendImage:info[UIImagePickerControllerOriginalImage]];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

@@ -19,6 +19,7 @@
 @property (nonatomic, strong) MCNearbyServiceAdvertiser *advertiser;
 @property (nonatomic, strong) MCNearbyServiceBrowser *browser;
 @property (nonatomic, strong) MPTChatUser *currentUser;
+@property (nonatomic, strong) MCPeerID *browserPeerID;
 
 @end
 
@@ -27,35 +28,7 @@
 
 @implementation MPTChatController
 
-static MPTChatController *singleton;
-
-+ (instancetype)sharedController {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        singleton = [[MPTChatController alloc] init];
-    });
-
-    return singleton;
-}
-
-- (MPTChatUser *)currentUser {
-    if (!_currentUser) {
-        MPTChatUser *currentUser = [[MPTDataController sharedController] chatUserWithPeerID:self.peerID.displayName inManagedObjectContext:nil];
-
-        if (!currentUser) {
-            currentUser = [[MPTDataController sharedController] createChatUserWithMapping:^(MPTChatUser *chatUser) {
-                chatUser.username = self.peerID.displayName;
-                chatUser.isLocalUser = @(YES);
-            } inManagedObjectContext:nil];
-
-            [currentUser.managedObjectContext save:nil];
-        }
-
-        _currentUser = currentUser;
-    }
-
-    return _currentUser;
-}
+#pragma mark - External Methods
 
 - (void)advertiseWithDisplayName:(NSString *)displayName {
     [self endSession];
@@ -71,6 +44,8 @@ static MPTChatController *singleton;
                                                           serviceType:SERVICE_TYPE];
     self.advertiser.delegate = self;
     [self.advertiser startAdvertisingPeer];
+
+    [self ingestMessage:@"Waiting to be invited to a session..." attachmentURL:nil thumbnailURL:nil fromPeer:nil];
 }
 
 - (void)inviteNearbyPeersToSessionWithDisplayName:(NSString *)displayName {
@@ -84,6 +59,8 @@ static MPTChatController *singleton;
                                                     serviceType:SERVICE_TYPE];
     self.browser.delegate = self;
     [self.browser startBrowsingForPeers];
+
+    [self ingestMessage:@"Looking for peers..." attachmentURL:nil thumbnailURL:nil fromPeer:nil];
 }
 
 - (void)endSession {
@@ -115,7 +92,7 @@ static MPTChatController *singleton;
     }
 }
 
-- (void)sendPicture:(UIImage *)image {
+- (void)sendImage:(UIImage *)image {
     //  Block we'll call for sending the message when it has been prepared
     void(^sendImage)(NSURL *) = ^(NSURL *imageURL) {
         for (MCPeerID *peer in self.currentSession.connectedPeers) {
@@ -169,6 +146,27 @@ static MPTChatController *singleton;
     });
 }
 
+#pragma mark - Internal Methods
+
+- (MPTChatUser *)currentUser {
+    if (!_currentUser) {
+        MPTChatUser *currentUser = [[MPTDataController sharedController] chatUserWithPeerID:self.peerID.displayName inManagedObjectContext:nil];
+        
+        if (!currentUser) {
+            currentUser = [[MPTDataController sharedController] createChatUserWithMapping:^(MPTChatUser *chatUser) {
+                chatUser.username = self.peerID.displayName;
+                chatUser.isLocalUser = @(YES);
+            } inManagedObjectContext:nil];
+            
+            [currentUser.managedObjectContext save:nil];
+        }
+        
+        _currentUser = currentUser;
+    }
+    
+    return _currentUser;
+}
+
 - (NSURL *)createFileURL {
     NSString *fileName = [[NSUUID UUID] UUIDString];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@.jpg", NSTemporaryDirectory(), fileName];
@@ -215,6 +213,7 @@ static MPTChatController *singleton;
 {
     NSLog(@"recieved invitation from peer.");
     invitationHandler(YES, self.currentSession);    // In most cases you might want to give users an option to connect or not.
+    [self.advertiser stopAdvertisingPeer];  //  Once invited, stop advertising
 }
 
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didNotStartAdvertisingPeer:(NSError *)error {
@@ -232,14 +231,22 @@ static MPTChatController *singleton;
         case MCSessionStateConnected: {
             action = @"is now connected";
         }
-        break;
+            break;
         case MCSessionStateConnecting: {
             action = @"is connecting";
         }
+            break;
         case MCSessionStateNotConnected: {
-            action = @"disconnected.";
+            action = @"disconnected";
+            
+            //  If I'm not the browser and the peer that dropped is the browser...
+            if (![peerID isEqual:self.peerID] &&
+                [peerID isEqual:self.browserPeerID])
+            {
+                [self.advertiser startAdvertisingPeer]; //  start advertising so the browser can find us again.
+            }
         }
-        break;
+            break;
     }
 
     NSString *message = [NSString stringWithFormat:@"%@ %@...", peerID.displayName, action];
@@ -257,7 +264,10 @@ static MPTChatController *singleton;
     if (!recievedData) {
         NSLog(@"error decoding message! %@", error);
     } else {
-        [self ingestMessage:recievedData[MESSAGE_KEY_MESSAGE] attachmentURL:nil thumbnailURL:nil fromPeer:peerID];
+        [self ingestMessage:recievedData[MESSAGE_KEY_MESSAGE]
+              attachmentURL:nil
+               thumbnailURL:nil
+                   fromPeer:peerID];
     }
 }
 
@@ -313,7 +323,7 @@ static MPTChatController *singleton;
     [browser invitePeer:peerID
               toSession:self.currentSession
             withContext:nil
-                timeout:5.0];
+                timeout:3.0];
 }
 
 // A nearby peer has stopped advertising
@@ -325,6 +335,12 @@ static MPTChatController *singleton;
 
 - (void)browser:(MCNearbyServiceBrowser *)browser didNotStartBrowsingForPeers:(NSError *)error {
     NSLog(@"error browsing!!! %@", error);
+}
+
+- (void)dealloc {
+    [self endSession];
+    [self.advertiser stopAdvertisingPeer];
+    [self.browser stopBrowsingForPeers];
 }
 
 @end

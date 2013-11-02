@@ -10,10 +10,8 @@
 
 @interface MPTChatController : NSObject
 
-+ (instancetype)sharedController;
-
 - (void)sendMessage:(NSString *)message;
-- (void)sendPicture:(UIImage *)image;
+- (void)sendImage:(UIImage *)image;
 
 - (void)inviteNearbyPeersToSessionWithDisplayName:(NSString *)displayName;
 - (void)advertiseWithDisplayName:(NSString *)displayName;

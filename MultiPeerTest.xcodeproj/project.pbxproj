@@ -41,6 +41,7 @@
 		B0BC3C841821CA3400315EAE /* UIActionSheet+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C7F1821CA3400315EAE /* UIActionSheet+Blocks.m */; };
 		B0BC3C851821CA3400315EAE /* UIAlertView+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = B0BC3C811821CA3400315EAE /* UIAlertView+Blocks.m */; };
 		B0DD258D182432630089B7CC /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0DD258C182432630089B7CC /* Main-iPad.storyboard */; };
+		B0E8316418256C74008EA56C /* UIStoryboardSegue+TargetDestination.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E8316318256C74008EA56C /* UIStoryboardSegue+TargetDestination.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		B0BC3C801821CA3400315EAE /* UIAlertView+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Blocks.h"; sourceTree = "<group>"; };
 		B0BC3C811821CA3400315EAE /* UIAlertView+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Blocks.m"; sourceTree = "<group>"; };
 		B0DD258C182432630089B7CC /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
+		B0E8316218256C74008EA56C /* UIStoryboardSegue+TargetDestination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+TargetDestination.h"; sourceTree = "<group>"; };
+		B0E8316318256C74008EA56C /* UIStoryboardSegue+TargetDestination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+TargetDestination.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +300,7 @@
 			children = (
 				B0BC3C7A1821CA3400315EAE /* UIAlertView+Blocks */,
 				B0396E811823372C00AD8B1F /* UIImage Categories */,
+				B0E8316118256C74008EA56C /* UIStoryboardSegue+TargetDestination */,
 			);
 			path = "Third Party";
 			sourceTree = "<group>";
@@ -313,6 +317,15 @@
 				B0BC3C811821CA3400315EAE /* UIAlertView+Blocks.m */,
 			);
 			path = "UIAlertView+Blocks";
+			sourceTree = "<group>";
+		};
+		B0E8316118256C74008EA56C /* UIStoryboardSegue+TargetDestination */ = {
+			isa = PBXGroup;
+			children = (
+				B0E8316218256C74008EA56C /* UIStoryboardSegue+TargetDestination.h */,
+				B0E8316318256C74008EA56C /* UIStoryboardSegue+TargetDestination.m */,
+			);
+			path = "UIStoryboardSegue+TargetDestination";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +440,7 @@
 				B0396E8E182350B800AD8B1F /* MPTImageViewController.m in Sources */,
 				B0396E7A1823345300AD8B1F /* MPTChatMessage.m in Sources */,
 				B0BC3C42182077A800315EAE /* MPTChatViewController.m in Sources */,
+				B0E8316418256C74008EA56C /* UIStoryboardSegue+TargetDestination.m in Sources */,
 				B0881422181A194D001FEC3C /* main.m in Sources */,
 				B0BC3C5618207BBB00315EAE /* MPTDataController.m in Sources */,
 				B0BC3C491820780400315EAE /* ChatModal.xcdatamodeld in Sources */,

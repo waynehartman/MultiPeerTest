@@ -8,7 +8,9 @@
 
 #import "MPTMainMenuViewController.h"
 #import "MPTChatController.h"
+#import "MPTChatViewController.h"
 #import "UIAlertView+Blocks.h"
+#import "UIStoryboardSegue+TargetDestination.h"
 
 typedef NS_ENUM(NSInteger, TableRow) {
     TableRowAdvertise = 0,
@@ -27,6 +29,13 @@ typedef NS_ENUM(NSInteger, TableRow) {
     [super viewDidLoad];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.targetDestinationController isKindOfClass:[MPTChatViewController class]]) {
+        MPTChatViewController *chatVC = segue.targetDestinationController;
+        chatVC.chatController = sender;
+    }
+}
+
 #pragma mark - UITableViewDelegate
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -34,21 +43,23 @@ typedef NS_ENUM(NSInteger, TableRow) {
 
     TableRow row = indexPath.row;
 
+    MPTChatController *chatController = [[MPTChatController alloc] init];
+
     switch (row) {
         case TableRowAdvertise: {
             action = ^(NSString *displayName) {
-                [[MPTChatController sharedController] advertiseWithDisplayName:displayName];
-                [self performSegueWithIdentifier:SEGUE_SHOW_CHAT_VIEW sender:nil];
+                [chatController advertiseWithDisplayName:displayName];
+                [self performSegueWithIdentifier:SEGUE_SHOW_CHAT_VIEW sender:chatController];
             };
         }
-        break;
+            break;
         case TableRowBrowse: {
             action = ^(NSString *displayName) {
-                [[MPTChatController sharedController] inviteNearbyPeersToSessionWithDisplayName:displayName];
-                [self performSegueWithIdentifier:SEGUE_SHOW_CHAT_VIEW sender:nil];
+                [chatController inviteNearbyPeersToSessionWithDisplayName:displayName];
+                [self performSegueWithIdentifier:SEGUE_SHOW_CHAT_VIEW sender:chatController];
             };
         }
-        break;
+            break;
     }
 
     RIButtonItem *item = [RIButtonItem itemWithLabel:@"OK"];

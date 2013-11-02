@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MPTChatController.h"
 
 @interface MPTChatViewController : UITableViewController
+
+@property (nonatomic, strong) MPTChatController *chatController;
 
 @end
