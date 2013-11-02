@@ -43,7 +43,7 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="10"/>
+                                                    <integer key="value" value="15"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -164,7 +164,7 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="10"/>
+                                                    <integer key="value" value="15"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
