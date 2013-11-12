@@ -211,7 +211,9 @@
 
 - (void)advertiser:(MCNearbyServiceAdvertiser *)advertiser didReceiveInvitationFromPeer:(MCPeerID *)peerID withContext:(NSData *)context invitationHandler:(void(^)(BOOL accept, MCSession *session))invitationHandler
 {
-    NSLog(@"recieved invitation from peer.");
+    NSString *message = [NSString stringWithFormat:@"Received invitation from %@. Joining...", peerID.displayName];
+    [self ingestMessage:message attachmentURL:nil thumbnailURL:nil fromPeer:nil];
+
     invitationHandler(YES, self.currentSession);    // In most cases you might want to give users an option to connect or not.
     [self.advertiser stopAdvertisingPeer];  //  Once invited, stop advertising
 }
@@ -224,7 +226,7 @@
 
 // Remote peer changed state
 - (void)session:(MCSession *)session peer:(MCPeerID *)peerID didChangeState:(MCSessionState)state {
-    NSLog(@"Peer did change state: %i", state);
+    NSLog(@"Peer did change state: %li", state);
     NSString *action = nil;
 
     switch (state) {
@@ -319,7 +321,10 @@
 #pragma mark - MCNearbyServiceBrowserDelegate
 
 - (void)browser:(MCNearbyServiceBrowser *)browser foundPeer:(MCPeerID *)peerID withDiscoveryInfo:(NSDictionary *)info {
-    NSLog(@"found peer! %@", peerID);
+    NSString *message = [NSString stringWithFormat:@"Sending an invitation to %@ to join the chat...", peerID.displayName];
+
+    [self ingestMessage:message attachmentURL:nil thumbnailURL:nil fromPeer:nil];
+
     [browser invitePeer:peerID
               toSession:self.currentSession
             withContext:nil
